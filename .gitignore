@@ -138,4 +138,7 @@ dmypy.json
 cython_debug/
 
 # Dataset
-Dataset/
+datasets/
+
+# vs code
+.vscode/

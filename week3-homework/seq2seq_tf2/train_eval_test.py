@@ -62,15 +62,19 @@ def test(params):
     print("Model restored")
     # for batch in b:
     #     yield batch_greedy_decode(model, batch, vocab, params)
-    if params['greedy_decode']:
+    # if params['greedy_decode']:
         # params['batch_size'] = 512
-        predict_result(model, params, vocab, params['test_save_dir'])
+    predict_result(model, params, vocab, params['test_save_dir'])
 
 
 def predict_result(model, params, vocab, result_save_path):
     dataset = batcher(vocab, params)
     # 预测结果
-    results = greedy_decode(model, dataset, vocab, params)
+    if params['decode_mode'] == 'greedy':
+        results = greedy_decode(model, dataset, vocab, params)
+    else:
+        results = beam_decode(model, dataset, vocab, params)
+
     results = list(map(lambda x: x.replace(" ",""), results))
     # 保存结果
     save_predict_result(results, params)

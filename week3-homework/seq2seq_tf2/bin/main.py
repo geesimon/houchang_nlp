@@ -76,7 +76,8 @@ def main():
     # mode
     parser.add_argument("--mode", default='train', help="training, eval or test options")
     parser.add_argument("--model", default='SequenceToSequence', help="which model to be slected")
-    parser.add_argument("--greedy_decode", default=True, help="greedy_decoder")
+    parser.add_argument("--decode_mode", default='greedy', help="greedy or beam search for inference")
+    # parser.add_argument("--greedy_decode", default=True, help="greedy_decoder")
 
     args = parser.parse_args()
     params = vars(args)

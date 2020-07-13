@@ -53,7 +53,8 @@ def batch_greedy_decode(model, enc_data, vocab, params):
         """
         your code, 通过调用tf.argmax完成greedy search，得到predicted_ids
         """
-        predicted_ids = tf.math.argmax(pred, 1)
+        predicted_ids = tf.math.argmax(pred, 1).numpy()
+        print
 
         for index, predicted_id in enumerate(predicted_ids):
             predicts[index] += vocab.id_to_word(predicted_id) + ' '
